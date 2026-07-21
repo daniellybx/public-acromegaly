@@ -1,0 +1,230 @@
+% Resultados - Soliris (Eculizumabe) / HPN - CID D59.5
+% Compilar na pasta resultados: cd resultados && pdflatex soliris_relatorio_analises.tex
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{graphicx}
+\geometry{margin=2.5cm}
+\graphicspath{{.}}
+
+\begin{document}
+
+\section*{Resultados}
+
+\subsection*{Pareamento entre bases e internações}
+
+As bases de Produção Ambulatorial (PA), Autorização de Medicamentos (AP) e Sistema de Informações Hospitalares (SIH) apresentaram 25.862, 17.038 e 481 registros, respectivamente, com 4.741 e 4.484 autorizações únicas em PA e AP e 640 pacientes únicos (CNS) na base de medicamentos; o SIH registrou 481 internações únicas (Tabela~1). Após o full join entre PA e AP pela chave de autorização, obteve-se 95.955 linhas, das quais 88.114 continham CNS e correspondiam a 640 pacientes únicos. Após normalização das variáveis e teste de 41 combinações de chaves para pareamento com o SIH, a combinação que maximizou o número de matches foi CID, sexo, raça/cor, município e CEP (5 dígitos), resultando em 19 registros pareados, 19 CNS únicos internados e 19 internações únicas, com média de 1 internação por paciente (Tabela~2). No dataset final unindo PA, AP e SIH, havia 626 linhas, 569 CNS únicos na base ambulatorial e 19 com internação identificada; todos os 19 apresentaram exatamente uma internação no período. O pareamento apenas por CID e CEP gerou 58 matches com CEP de 5 dígitos e 51 com CEP de 8 dígitos; nenhum desses matches apresentou concordância nas variáveis demográficas (sexo, idade, município, raça/cor) entre as bases.
+
+\begin{table}[ht]
+\centering
+\caption{Dados originais das bases PA, AP e SIH.}
+\label{tab:1}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Base} & \textbf{Registros} & \textbf{Colunas} & \textbf{Autoriz./internações únicas} \\
+\midrule
+PA & 25.862 & 60 & 4.741 \\
+AP & 17.038 & 51 & 4.484 (640 CNS) \\
+SIH & 481 & 113 & 481 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Resumo do pareamento PA-AP-SIH (melhor combinação de chaves).}
+\label{tab:2}
+\begin{tabular}{lr}
+\toprule
+\textbf{Métrica} & \textbf{Valor} \\
+\midrule
+Total de linhas unidas & 626 \\
+Linhas com match SIH & 19 \\
+CNS únicos no dataset PA-AP & 569 \\
+CNS únicos internados (com match) & 19 \\
+Internações únicas (com match) & 19 \\
+Média de internações por CNS & 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Perfil dos pacientes em tratamento em 2024}
+
+No ano de 2024, o conjunto unificado de medicamentos e produção ambulatorial filtrado por data de competência totalizou 17.970 registros, 2.287 autorizações únicas e 562 pacientes únicos; 35 autorizações (1,53\%) não tinham CNS vinculado e o período de competência variou de janeiro a dezembro de 2024. Considerando o recorte por sexo, descrito na Tabela~3, as mulheres representaram 290 (51,6\%) e os homens 272 (48,4\%). A distribuição por faixa etária está na Tabela~4: observaram-se 9 pacientes menores de 18 anos (1,6\%), 86 de 18 a 29 anos (15,3\%), 121 de 30 a 39 anos (21,5\%), 145 de 40 a 49 anos (25,8\%), 81 de 50 a 59 anos (14,4\%), 73 de 60 a 69 anos (13,0\%), 37 de 70 a 79 anos (6,6\%) e 10 com 80 anos ou mais (1,8\%). A pirâmide etária dos pacientes únicos por sexo e faixa etária é apresentada na Figura~1. Quanto à raça/cor (Tabela~5), 254 pacientes foram classificados como brancos (45,2\%), 250 como pardos (44,5\%), 42 como pretos (7,5\%) e 16 como amarelos (2,9\%). A distribuição por região mostrou 218 pacientes no Sudeste (38,8\%), 175 no Nordeste (31,1\%), 94 no Sul (16,7\%), 53 no Centro-Oeste (9,4\%) e 22 no Norte (3,9\%). São Paulo concentrou o maior número de pacientes (122; 21,7\%), seguido por Rio de Janeiro (45; 8,0\%), Minas Gerais (43; 7,7\%), Pernambuco (40; 7,1\%), Bahia e Paraná (38 cada; 6,8\%), conforme a Tabela~6.
+
+\begin{table}[ht]
+\centering
+\caption{Distribuição por sexo (pacientes únicos, 2024).}
+\label{tab:3}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Sexo} & \textbf{n} & \textbf{\%} \\
+\midrule
+Feminino & 290 & 51,6 \\
+Masculino & 272 & 48,4 \\
+Total & 562 & 100 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Distribuição por faixa etária (pacientes únicos, 2024).}
+\label{tab:4}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Faixa etária} & \textbf{n} & \textbf{\%} \\
+\midrule
+$<$ 18 anos & 9 & 1,6 \\
+18 a 29 anos & 86 & 15,3 \\
+30 a 39 anos & 121 & 21,5 \\
+40 a 49 anos & 145 & 25,8 \\
+50 a 59 anos & 81 & 14,4 \\
+60 a 69 anos & 73 & 13,0 \\
+70 a 79 anos & 37 & 6,6 \\
+80 anos ou mais & 10 & 1,8 \\
+Total & 562 & 100 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Distribuição por raça/cor (pacientes únicos, 2024).}
+\label{tab:5}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Raça/cor} & \textbf{n} & \textbf{\%} \\
+\midrule
+Branca & 254 & 45,2 \\
+Parda & 250 & 44,5 \\
+Preta & 42 & 7,5 \\
+Amarela & 16 & 2,9 \\
+Total & 562 & 100 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Distribuição por UF (pacientes únicos, 2024) -- principais.}
+\label{tab:6}
+\begin{tabular}{lrr}
+\toprule
+\textbf{UF} & \textbf{n} & \textbf{\%} \\
+\midrule
+SP & 122 & 21,7 \\
+RJ & 45 & 8,0 \\
+MG & 43 & 7,7 \\
+PE & 40 & 7,1 \\
+BA & 38 & 6,8 \\
+PR & 38 & 6,8 \\
+CE & 36 & 6,4 \\
+RS & 28 & 5,0 \\
+SC & 28 & 5,0 \\
+GO & 26 & 4,6 \\
+Demais (16 UFs) & 158 & 28,1 \\
+Total & 562 & 100 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{20251212_soliris_piramide_etaria.png}
+\caption{Pirâmide etária dos pacientes com HPN em uso de Soliris (2024).}
+\label{fig:1}
+\end{figure}
+
+\subsection*{Uso de medicamento e sobrevida em tratamento}
+
+O único medicamento identificado nas autorizações foi eculizumabe (300 mg/30 ml solução injetável); 561 pacientes apresentaram esse medicamento como o mais recente no ano. No total, foram registradas 103.372 doses dispensadas e 102.725 doses aprovadas (Tabela~7); os valores financeiros não estavam disponíveis nas bases utilizadas. Considerando abandono como ausência de uso do medicamento por seis meses ou mais, em dezembro de 2024 havia 561 pacientes em acompanhamento, dos quais 25 (4,46\%) preenchiam o critério de abandono; os primeiros abandonos apareceram em agosto (4 pacientes; 0,8\%), com aumento progressivo até dezembro, conforme a Tabela~8. O número de pacientes sem medicamento há seis meses ou mais por mês de referência é apresentado na Figura~2. Na análise de sobrevida (Kaplan-Meier), 561 pacientes foram incluídos, com 28 eventos de abandono e 533 censuras; o tempo médio até o evento foi de 9,69 meses e o tempo mediano de 11,99 meses. A curva de Kaplan-Meier global é apresentada na Figura~3. As curvas estratificadas por sexo, faixa etária, raça/cor e região estão nas Figuras~4 a 7.
+
+\begin{table}[ht]
+\centering
+\caption{Medicamento: doses dispensadas e aprovadas (2024).}
+\label{tab:7}
+\begin{tabular}{lr}
+\toprule
+\textbf{Indicador} & \textbf{Valor} \\
+\midrule
+Medicamento & Eculizumabe 300 mg/30 ml \\
+Doses dispensadas & 103.372 \\
+Doses aprovadas & 102.725 \\
+Valor produzido (R\$) & 0 \\
+Valor pago SUS (R\$) & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Abandonos por mês (critério: $\geq$ 6 meses sem medicamento).}
+\label{tab:8}
+\small
+\begin{tabular}{lrrc}
+\toprule
+\textbf{Mês} & \textbf{Total pac.} & \textbf{Abandonos} & \textbf{\%} \\
+\midrule
+2024-01 & 309 & 0 & 0 \\
+2024-02 & 354 & 0 & 0 \\
+2024-03 & 391 & 0 & 0 \\
+2024-04 & 425 & 0 & 0 \\
+2024-05 & 447 & 0 & 0 \\
+2024-06 & 464 & 0 & 0 \\
+2024-07 & 483 & 0 & 0 \\
+2024-08 & 497 & 4 & 0,8 \\
+2024-09 & 513 & 10 & 1,95 \\
+2024-10 & 534 & 20 & 3,75 \\
+2024-11 & 546 & 21 & 3,85 \\
+2024-12 & 561 & 25 & 4,46 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.9\textwidth]{20251205_soliris_histograma_sem_medicamento.png}
+\caption{Pacientes sem uso do medicamento há 6 ou mais meses, por mês (2024).}
+\label{fig:2}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.9\textwidth]{20251205_soliris_kaplan_meier.png}
+\caption{Curva de Kaplan-Meier -- sobrevida em tratamento (abandono = 6 meses sem medicamento).}
+\label{fig:3}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.9\textwidth]{20251205_soliris_kaplan_meier_sexo.png}
+\caption{Curvas de Kaplan-Meier estratificadas por sexo.}
+\label{fig:4}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.9\textwidth]{20251205_soliris_kaplan_meier_idade.png}
+\caption{Curvas de Kaplan-Meier estratificadas por faixa etária.}
+\label{fig:5}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.9\textwidth]{20251205_soliris_kaplan_meier_raca_cor.png}
+\caption{Curvas de Kaplan-Meier estratificadas por raça/cor.}
+\label{fig:6}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.9\textwidth]{20251205_soliris_kaplan_meier_regiao.png}
+\caption{Curvas de Kaplan-Meier estratificadas por região.}
+\label{fig:7}
+\end{figure}
+
+\end{document}

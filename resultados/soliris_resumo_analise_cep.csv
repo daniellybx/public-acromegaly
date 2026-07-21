@@ -1,0 +1,17 @@
+Metrica,Valor
+Matches por CID + CEP (5 dígitos),58
+CNS únicos com match (CEP 5 dígitos),58
+Matches com sexo E idade iguais (idade ±1) (CEP 5),0
+CNS únicos com sexo E idade iguais (idade ±1) (CEP 5),0
+"Matches com sexo, idade E município iguais (idade ±1) (CEP 5)",0
+"CNS únicos com sexo, idade E município iguais (idade ±1) (CEP 5)",0
+"Matches com sexo, idade, município E raça/cor iguais (idade ±1) (CEP 5)",0
+"CNS únicos com sexo, idade, município E raça/cor iguais (idade ±1) (CEP 5)",0
+Matches por CID + CEP (8 dígitos),51
+CNS únicos com match (CEP 8 dígitos),51
+Matches com sexo E idade iguais (idade ±1) (CEP 8),0
+CNS únicos com sexo E idade iguais (idade ±1) (CEP 8),0
+"Matches com sexo, idade E município iguais (idade ±1) (CEP 8)",0
+"CNS únicos com sexo, idade E município iguais (idade ±1) (CEP 8)",0
+"Matches com sexo, idade, município E raça/cor iguais (idade ±1) (CEP 8)",0
+"CNS únicos com sexo, idade, município E raça/cor iguais (idade ±1) (CEP 8)",0
