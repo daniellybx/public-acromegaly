@@ -25,7 +25,8 @@ nomes_arquivos_en <- c(
   "fluxograma_uniao_dados" = "figure1_flowchart_data_linkage",
   "mapa_uf_estabelecimento_contagens" = "map_state_dispensing_facility_counts",
   "mapa_uf_residencia_quartis" = "map_state_residence_quartiles",
-  "mapa_uf_residencia_taxa_por_milhao" = "map_state_residence_rate_per_million"
+  "mapa_uf_residencia_taxa_por_milhao" = "map_state_residence_rate_per_million",
+  "medicamentos_mesma_apac" = "medications_same_apac"
 )
 
 nome_arquivo_en <- function(indicador) {
@@ -63,7 +64,17 @@ dicionario_en <- c(
   "analogos_mutuamente_exclusivos" = "analogues_mutually_exclusive",
   "combinacoes_exclusivas" = "exclusive_combinations",
 
+  "resumo" = "summary",
+  "pares_de_codigos" = "code_pairs",
+  "mudanca_por_paciente" = "change_by_patient",
+
   # Colunas
+  "codigo_principal" = "main_code",
+  "codigo_adicional" = "additional_code",
+  "principal" = "main_medication",
+  "adicional" = "additional_medication",
+  "principios_somente_AM" = "active_ingredients_AM_only",
+  "principios_AM_mais_PA" = "active_ingredients_AM_plus_PA",
   "med_nome" = "medication",
   "usuarios_frequencia_ano" = "users_in_year",
   "usuarios_abandono_frequencia" = "users_discontinued",
@@ -204,6 +215,12 @@ dicionario_en <- c(
   "Registros AM com competência 2024 processados em 2024" = "AM records with 2024 competence processed in 2024",
   "Registros AM com competência 2024 processados em 2025 (capturados)" = "AM records with 2024 competence processed in 2025 (captured)",
   "Meses de processamento de 2025 com registros de competência 2024" = "2025 processing months with 2024-competence records",
+
+  "Registros de dispensação da coorte (AM)" = "Cohort dispensing records (AM)",
+  "Medicamentos adicionais do estudo registrados no PA na mesma APAC (registro x medicamento)" = "Additional study medications recorded in PA within the same APAC (record x medication)",
+  "Registros com ao menos um medicamento adicional" = "Records with at least one additional medication",
+  "Registros com outro princípio ativo na mesma APAC" = "Records with another active ingredient within the same APAC",
+  "Pacientes cujo conjunto de princípios ativos muda ao incluir o PA" = "Patients whose set of active ingredients changes when PA is included",
 
   # Valores: etapas do fluxograma
   "1a. APAC Medicines (AM) - registros brutos (1 por autorização-competência-processamento)" = "1a. APAC Medicines (AM) - raw records (1 per authorization-competence-processing month)",
