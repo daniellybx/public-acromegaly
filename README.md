@@ -97,6 +97,20 @@ Open `notebooks/acromegalia_uniao_medicamentos.ipynb` and run all cells, in orde
 7. **Discontinuation analysis** - monthly medication use, treatment abandonment
 8. **Flowchart** - data construction flowchart summarizing record counts from raw load to final analytic sample
 
+## Revisão de 07/09/2026 (terceira rodada de revisão)
+
+Correções feitas nos dois notebooks em resposta à terceira revisão do manuscrito (AcroSUS). Todos os artefatos estão em [`resultados/third_review/`](resultados/third_review/). O [README da pasta](resultados/third_review/README.md) mapeia cada item da revisão para seus arquivos.
+
+Principais mudanças:
+
+- **Coorte**: registros sem identificador do paciente (`AP_CNSPCN`) foram excluídos de todas as análises em nível de paciente (434 registros, 282 autorizações). A coorte final tem **4.231 pacientes**, e não 4.232.
+- **Ligação AM + PA**: o PA é agregado para uma linha por chave (autorização + competência + processamento) antes do join, e o join é forçado a ser um-para-um. A ligação não multiplica mais os registros.
+- **Geografia**: taxas por milhão (IC95% exato de Poisson) calculadas pela **residência** do paciente (`AP_MUNPCN`, completa no AM). O município do estabelecimento (`AP_UFMUN`) é usado só como contagem de locais de dispensação. Na comparação pareada, 99,55% dos pacientes são dispensados na própria região de residência.
+- **Definição de caso**: a busca exata por `E22`/`E220` em `AP_CIDPRI`/`AP_CIDSEC` foi mantida e documentada. Nenhum paciente entrou só pelo código `E22`, e 1 entrou só pelo diagnóstico secundário.
+- **Dados ausentes**: os 468 pacientes sem idade e raça/cor são os não vinculados ao PA, e 98,7% deles residem no Sudeste. Os campos do AM foram usados para avaliar a direção do viés.
+- **Figuras e tabelas**: a Figura 2 passou a representar a dispensação mensal registrada (com combinações e a categoria "No dispensing record"); o fluxograma (Figura 1) foi refeito; a Tabela 4 usa categorias mutuamente exclusivas; foram adicionadas a tabela de códigos SIGTAP, a janela de extração e os percentuais de idade com os dois denominadores.
+- **Correção de erro**: os códigos de raça/cor 03 e 04 (Parda/Amarela) estavam trocados em `acromegalia_analise_medicamentos.ipynb`.
+
 ## License
 
 This project is licensed under the GNU General Public License v3.0 - see [LICENSE](LICENSE) for details.

@@ -1,6 +1,6 @@
 # Terceira revisão (3a_Rev_AcroSUS_Completo) – artefatos corrigidos
 
-Esta pasta reúne as saídas dos dois notebooks corrigidos (`notebooks/acromegalia_uniao_medicamentos.ipynb` e `notebooks/acromegalia_analise_medicamentos.ipynb`), executados em 13/10/2026. Todos os arquivos têm o prefixo `20261013_`. O texto em inglês da resposta aos revisores, com sugestões de redação para o manuscrito, está em [response_to_reviewers_draft.md](response_to_reviewers_draft.md).
+Esta pasta reúne as saídas dos dois notebooks corrigidos (`notebooks/acromegalia_uniao_medicamentos.ipynb` e `notebooks/acromegalia_analise_medicamentos.ipynb`), executados na revisão de 07/09/2026. Todos os arquivos têm o prefixo `20260907_`. O texto em inglês da resposta aos revisores, com sugestões de redação para o manuscrito, está em [response_to_reviewers_draft.md](response_to_reviewers_draft.md).
 
 ## Números principais da coorte corrigida
 
