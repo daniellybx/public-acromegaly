@@ -55,8 +55,3 @@ Only in `acromegalia_analise_medicamentos.ipynb`:
 Only in `acromegalia_uniao_medicamentos.ipynb`:
 - Figure 2 (7.4.4) and the flowchart (9) rebuilt.
 - The exploratory alluvial plots 7.4.2/7.4.3 remain in the notebook with a note but are no longer saved to disk.
-
-## Points of attention (not requested by the review, not changed)
-
-- `medication_spending.xlsx`: PA amounts are summed by the AM main medication (`AP_PRIPAL`), including PA lines for other procedures of the same APAC. The resulting distribution across medications looks implausible (almost all the amount falls under octreotide 10 mg) and should be reviewed before being used in the text.
-- Medication classification uses only the AM main procedure. Some linked PA lines record another medication in the same APAC, which may indicate concomitant use that is not captured.
