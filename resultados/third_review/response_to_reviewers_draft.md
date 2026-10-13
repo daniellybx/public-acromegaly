@@ -1,6 +1,6 @@
 # Third review round – draft response and suggested manuscript text
 
-All numbers below were produced by the corrected notebooks (`notebooks/acromegalia_uniao_medicamentos.ipynb` and `notebooks/acromegalia_analise_medicamentos.ipynb`) and are exported in `resultados/third_review/`. File names are given without the date prefix (`20260907_dados2024_`).
+All numbers below were produced by the corrected notebooks (`notebooks/acromegalia_uniao_medicamentos.ipynb` and `notebooks/acromegalia_analise_medicamentos.ipynb`) and are exported in `resultados/third_review/`. File names are given without the date prefix (`20260907_data2024_`).
 
 ---
 
@@ -10,7 +10,7 @@ All numbers below were produced by the corrected notebooks (`notebooks/acromegal
 
 **Suggested Methods text.** "Records without a valid encrypted patient identifier could not be deduplicated into individuals and were excluded from all patient-level analyses (434 dispensing records from 282 authorizations)."
 
-Files: `exclusao_sem_cns.xlsx`, `fluxograma_uniao_dados.png/.xlsx`.
+Files: `exclusion_missing_patient_id.xlsx`, `figure1_flowchart_data_linkage.png/.xlsx`.
 
 Changes from 4,232 to 4,231: the only counts that changed are the total and the 40–49 age band (842 → 841), the male group (1,631 → 1,630) and the facility-based Centro-Oeste count (270 → 269). All percentages were recalculated.
 
@@ -22,7 +22,7 @@ Changes from 4,232 to 4,231: the only counts that changed are the total and the 
 
 No additional filter on medication procedure codes was applied at extraction. All APAC Medicines records selected by the diagnostic criterion had one of the eight SIGTAP procedure codes listed in Supplementary Table S1 as their main procedure (`AP_PRIPAL`).
 
-Empirical assessment of the case definition (2024 cohort, file `definicao_caso_cid.xlsx`):
+Empirical assessment of the case definition (2024 cohort, file `case_definition_icd.xlsx`):
 
 | | Patients | Records |
 |---|---:|---:|
@@ -42,7 +42,7 @@ The only patient included through the secondary field had `E221` as primary diag
 
 ## Item 3 – Geographic analysis and residence information
 
-**Response.** We adopted the first option offered by the reviewer: regional and state rates are now calculated using the patient's **municipality of residence**. Residence is taken from `AP_MUNPCN`, a field of the APAC Medicines file that is present in every record. In the previous version, residence was taken from the Outpatient Production field `PA_MUNPCN`, which is missing whenever a record has no Outpatient Production match. This was the source of the missing residence data, and 462 of the 468 affected patients were dispensed in the Southeast (file `geografia_residencia_taxas.xlsx`, sheet `ausente_por_regiao_dispensacao`). With `AP_MUNPCN`, residence is known for all 4,231 patients.
+**Response.** We adopted the first option offered by the reviewer: regional and state rates are now calculated using the patient's **municipality of residence**. Residence is taken from `AP_MUNPCN`, a field of the APAC Medicines file that is present in every record. In the previous version, residence was taken from the Outpatient Production field `PA_MUNPCN`, which is missing whenever a record has no Outpatient Production match. This was the source of the missing residence data, and 462 of the 468 affected patients were dispensed in the Southeast (file `geography_residence_rates.xlsx`, sheet `missing_by_dispensing_region`). With `AP_MUNPCN`, residence is known for all 4,231 patients.
 
 The facility-based distribution (`AP_UFMUN`, municipality of the dispensing establishment) is kept only as counts of dispensing locations, without per-million rates.
 
@@ -57,9 +57,9 @@ Rates per million residents (IBGE 2024 population estimates; exact Poisson 95% C
 | North | 128 | 6.77 (5.65–8.05) |
 | **Brazil** | **4,231** | **19.83 (19.24–20.44)** |
 
-State-level rates: sheet `uf_residencia_taxas`.
+State-level rates: sheet `state_residence_rates`.
 
-Paired comparison of residence and dispensing region (same 4,231 patients on both sides): 4,212 patients (99.55%) were dispensed in their region of residence, and 4,191 (99.05%) in their state of residence. Only 19 patients (0.45%) were dispensed in another region. Among Southeast residents, 2,306 of 2,309 were dispensed in the Southeast; the Southeast had 2,320 patients by dispensing location versus 2,309 by residence, a net difference of 11. The previous interpretation (473 patients travelling to the Southeast) came from comparing a facility-based total with a residence-based total that excluded the 468 patients missing `PA_MUNPCN`. It has been removed. For any socioeconomic comparison, the same set of patients is used on both sides (sheets `regiao_mesmo_conjunto` and `uf_mesmo_conjunto`).
+Paired comparison of residence and dispensing region (same 4,231 patients on both sides): 4,212 patients (99.55%) were dispensed in their region of residence, and 4,191 (99.05%) in their state of residence. Only 19 patients (0.45%) were dispensed in another region. Among Southeast residents, 2,306 of 2,309 were dispensed in the Southeast; the Southeast had 2,320 patients by dispensing location versus 2,309 by residence, a net difference of 11. The previous interpretation (473 patients travelling to the Southeast) came from comparing a facility-based total with a residence-based total that excluded the 468 patients missing `PA_MUNPCN`. It has been removed. For any socioeconomic comparison, the same set of patients is used on both sides (sheets `region_same_patient_set` and `state_same_patient_set`).
 
 **Suggested Discussion text (item 3e).** "Lower treated-patient rates in the North and Northeast cannot distinguish lower underlying disease occurrence from differences in diagnosis, treatment initiation, public-sector treatment coverage, or access to specialised care. These rates describe patients treated with the study medicines through the SUS and should not be interpreted as disease prevalence."
 
@@ -74,7 +74,7 @@ Paired comparison of residence and dispensing region (same 4,231 patients on bot
 - When more than one active ingredient is recorded in the same patient-month, the combination is kept as its own category (e.g., "Octreotide + Cabergoline") instead of retaining one arbitrarily.
 - Each ribbon between two months is coloured by the patient's category in the month of origin, no longer by the January value.
 
-Data underlying the figure (patients by category and month, and month-to-month transitions): `figura2_dispensacao_mensal_dados.xlsx`.
+Data underlying the figure (patients by category and month, and month-to-month transitions): `figure2_recorded_monthly_dispensing_data.xlsx`.
 
 **Suggested caption.** "Figure 2. Recorded monthly dispensing of acromegaly medicines in the SUS, 2024 (N = 4,231 patients). Each vertical axis is a competence month. Strata show the number of patients by the active ingredient(s) with a dispensing record in that month. Ribbons show month-to-month transitions and are coloured by the category in the month of origin. 'No dispensing record' indicates a month without any record for the patient. Combinations indicate more than one active ingredient recorded in the same month. The figure reflects administrative dispensing records, not estimated treatment coverage."
 
@@ -88,7 +88,7 @@ In the corrected pipeline, Outpatient Production is first **aggregated to one ro
 
 Linkage counts (all years extracted): 74,764 APAC Medicines records linked, 9,278 not linked (kept). 613 Outpatient Production keys had no APAC Medicines match, corresponding to 489 authorizations never present in APAC Medicines (excluded). In the final 2024 cohort, 34,097 of 38,559 records (88.4%) were linked.
 
-**5c. Response.** Missing age (`PA_IDADE`) and race/colour (`PA_RACACOR`) correspond exactly to the 468 patients whose selected record had no Outpatient Production match. 460 of these patients had no linked record at all in 2024, and 8 had a linked record in another month (file `demografia_ausente_ligacao.xlsx`). The missingness is therefore linkage-related. We assessed its direction empirically using the APAC Medicines fields for age (`AP_NUIDADE`), race/colour (`AP_RACACOR`) and sex, which are complete. Among linked patients, the age from APAC Medicines agreed with the Outpatient Production age within one year for 100% of patients.
+**5c. Response.** Missing age (`PA_IDADE`) and race/colour (`PA_RACACOR`) correspond exactly to the 468 patients whose selected record had no Outpatient Production match. 460 of these patients had no linked record at all in 2024, and 8 had a linked record in another month (file `missing_demographics_linkage.xlsx`). The missingness is therefore linkage-related. We assessed its direction empirically using the APAC Medicines fields for age (`AP_NUIDADE`), race/colour (`AP_RACACOR`) and sex, which are complete. Among linked patients, the age from APAC Medicines agreed with the Outpatient Production age within one year for 100% of patients.
 
 | | Linked (n = 3,763) | Not linked (n = 468) |
 |---|---|---|
@@ -108,7 +108,7 @@ Non-linkage was therefore strongly concentrated in the Southeast. Unlinked patie
 
 ## Item 6 – Data period, software and Abstract
 
-**6a. Suggested text.** "Monthly SIASUS files were extracted for processing months January 2023 to February 2025. The study period was defined by the competence date (AP_CMP) from January to December 2024. Authorizations with a 2024 competence processed in January–February 2025 were captured (41 records). Records with a 2024 competence processed after February 2025 were not captured." (File `janela_extracao.xlsx`.)
+**6a. Suggested text.** "Monthly SIASUS files were extracted for processing months January 2023 to February 2025. The study period was defined by the competence date (AP_CMP) from January to December 2024. Authorizations with a 2024 competence processed in January–February 2025 were captured (41 records). Records with a 2024 competence processed after February 2025 were not captured." (File `extraction_window.xlsx`.)
 
 **6b. Suggested text.** "DATASUS files were downloaded with Python (PySUS 1.0.1; pandas 2.3.3). Data preparation, analysis and figure production were carried out in R 4.6.0 (tidyverse, ggalluvial, ggsankey, sf and geobr; openxlsx for table export)." Cite PySUS, R and the R packages.
 
@@ -120,9 +120,9 @@ Non-linkage was therefore strongly concentrated in the Southeast. Unlinked patie
 
 ## Item 7 – Internal inconsistencies
 
-- **7a.** File `idade.xlsx` gives both denominators. Patients aged 60 years or older: 1,377, i.e. 32.5% of the full cohort (n = 4,231) and 36.6% of patients with known age (n = 3,763). State the denominator in the Table 1 header and in the text, for example: "Approximately one-third (32.5%) of the cohort, or 36.6% of patients with known age, were aged 60 years or older."
+- **7a.** File `age.xlsx` gives both denominators. Patients aged 60 years or older: 1,377, i.e. 32.5% of the full cohort (n = 4,231) and 36.6% of patients with known age (n = 3,763). State the denominator in the Table 1 header and in the text, for example: "Approximately one-third (32.5%) of the cohort, or 36.6% of patients with known age, were aged 60 years or older."
 - **7b.** The label is now "≥ 80" in the tables and the age pyramid.
-- **7c. Table 4 (mutually exclusive categories; file `tabela4_categorias_medicamentos.xlsx`):**
+- **7c. Table 4 (mutually exclusive categories; file `table4_medication_categories.xlsx`):**
 
 | Category | Without cabergoline | With cabergoline | Total (%) |
 |---|---:|---:|---:|
@@ -142,7 +142,7 @@ Non-linkage was therefore strongly concentrated in the Southeast. Unlinked patie
 
 ## Item 8 – Reporting, references and accessibility
 
-- **8a.** Supplementary Table S1 lists all 8 SIGTAP codes with formatted code, active ingredient, description, and 2024 record and patient counts (file `codigos_sigtap.xlsx`).
+- **8a.** Supplementary Table S1 lists all 8 SIGTAP codes with formatted code, active ingredient, description, and 2024 record and patient counts (file `sigtap_codes.xlsx`).
 - **8b. RECORD checklist.**
   - Item 10 (Methods): "No sample-size calculation was performed because all eligible records in the national database for 2024 were included."
   - Item 12.3: "Authorization-level linkage of APAC Medicines and Outpatient Production records used authorization number, competence month and processing month (one-to-one after aggregation of Outpatient Production to one row per key). Patient-level deduplication used the encrypted patient identifier and was performed after linkage."

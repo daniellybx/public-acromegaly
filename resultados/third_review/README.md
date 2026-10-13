@@ -1,60 +1,62 @@
-# Terceira revisão (3a_Rev_AcroSUS_Completo) – artefatos corrigidos
+# Third review (3a_Rev_AcroSUS_Completo) – corrected outputs
 
-Esta pasta reúne as saídas dos dois notebooks corrigidos (`notebooks/acromegalia_uniao_medicamentos.ipynb` e `notebooks/acromegalia_analise_medicamentos.ipynb`), executados na revisão de 07/09/2026. Todos os arquivos têm o prefixo `20260907_`. O texto em inglês da resposta aos revisores, com sugestões de redação para o manuscrito, está em [response_to_reviewers_draft.md](response_to_reviewers_draft.md).
+This folder contains the outputs of the two corrected notebooks (`notebooks/acromegalia_uniao_medicamentos.ipynb` and `notebooks/acromegalia_analise_medicamentos.ipynb`) for the review of 07/09/2026. All files have the prefix `20260907_`. File names, sheet names, column names and values are written in English (see `notebooks/func/translation_en.R`). The draft response to the reviewers, with suggested manuscript text, is in [response_to_reviewers_draft.md](response_to_reviewers_draft.md).
 
-## Números principais da coorte corrigida
+## Key figures of the corrected cohort
 
-| Indicador | Antes | Agora |
+| Indicator | Before | Now |
 |---|---:|---:|
-| Pacientes | 4.232 | **4.231** |
-| Registros de dispensação 2024 | 47.743 (inflado pelo join) | **38.559** |
-| Autorizações 2024 | 19.053 | **18.831** |
-| Registros excluídos sem CNS | – | 434 (282 autorizações) |
-| Residência ausente | 468–496 (`PA_MUNPCN`) | **0** (`AP_MUNPCN`) |
-| Taxa Brasil (por milhão, residência) | – | 19,83 (IC95% 19,24–20,44) |
+| Patients | 4,232 | **4,231** |
+| Dispensing records, 2024 | 47,743 (inflated by the join) | **38,559** |
+| Authorizations, 2024 | 19,053 | **18,831** |
+| Records excluded without patient identifier | – | 434 (282 authorizations) |
+| Missing residence | 468 (`PA_MUNPCN`) | **0** (`AP_MUNPCN`) |
+| Brazil rate (per million, by residence) | – | 19.83 (95% CI 19.24–20.44) |
 
-## Item da revisão → artefato
+## Review item → output
 
-| Item | O que foi feito | Arquivo(s) |
+File names below omit the `20260907_data2024_` prefix.
+
+| Item | What was done | File(s) |
 |---|---|---|
-| 1 – Denominador | Registros sem `AP_CNSPCN` excluídos de todas as análises de paciente; a validação fixa em 4.232 foi removida | `exclusao_sem_cns.xlsx`, todas as tabelas |
-| 1c / 5 – Figura 1 | Fluxograma refeito: agregação do PA, ligação 1:0..1, filtro 2024, exclusão sem CNS; sem o rótulo "deduplicated" | `fluxograma_uniao_dados.png/.xlsx` |
-| 2 – Definição de caso | Pacientes por via de inclusão (principal/secundário/E22) e comparação com a coorte restrita a CID principal E220 | `definicao_caso_cid.xlsx` |
-| 3 – Geografia | Taxas por milhão (IC95% Poisson exato) por **residência** (`AP_MUNPCN`); estabelecimento só como contagem; ausentes por região de dispensação; matriz pareada residência × dispensação; mesmo conjunto de pacientes | `geografia_residencia_taxas.xlsx`, `uf_estabelecimento_dispensacao.xlsx`, `regiao_estabelecimento_dispensacao.xlsx`, `mapa_uf_*.png` |
-| 4 – Figura 2 | Rotulada como "dispensação mensal registrada"; N = 4.231; "No dispensing record" definido; combinações mantidas; cor das faixas pelo mês de origem | `figura2_dispensacao_mensal_registrada.png`, `figura2_dispensacao_mensal_dados.xlsx` |
-| 5a/5b – Ligação | PA agregado para 1 linha por chave antes do join; join `one-to-one`; ligação por autorização separada da deduplicação por paciente | notebook seção 3, `fluxograma_uniao_dados.xlsx` |
-| 5c – Demografia ausente | Os 468 com idade/raça ausentes são exatamente os não vinculados ao PA; avaliação empírica com os campos do AM | `demografia_ausente_ligacao.xlsx` |
-| 6a – Período | Janela de extração (processamento 2023-01 a 2025-02), campo `AP_CMP`, 41 registros de 2024 processados em 2025 | `janela_extracao.xlsx` |
-| 7a/7b/7e – Idade | Percentuais com os dois denominadores, rótulo "≥ 80", mediana e IIQ | `idade.xlsx`, `piramide_etaria.png` |
-| 7c – Tabela 4 | Categorias mutuamente exclusivas (octreotida sem lanreotida, lanreotida sem octreotida, ambos) | `tabela4_categorias_medicamentos.xlsx` |
-| 8a – SIGTAP | Tabela suplementar com os 8 códigos | `codigos_sigtap.xlsx` |
-| 6b–d, 7d, 7f, 7g, 8b–d | Ajustes de texto: só no manuscrito | `response_to_reviewers_draft.md` |
+| 1 – Denominator | Records without `AP_CNSPCN` excluded from all patient-level analyses; the hard-coded check for 4,232 was removed | `exclusion_missing_patient_id.xlsx`, all tables |
+| 1c / 5 – Figure 1 | Flowchart rebuilt: PA aggregation, 1:0..1 linkage, 2024 filter, exclusion of missing identifiers; no "deduplicated" label | `figure1_flowchart_data_linkage.png/.xlsx` |
+| 2 – Case definition | Patients by inclusion route (primary/secondary/E22) and comparison with the cohort restricted to primary diagnosis E220 | `case_definition_icd.xlsx` |
+| 3 – Geography | Rates per million (exact Poisson 95% CI) by patient **residence** (`AP_MUNPCN`); facility used only as counts; missing residence by dispensing region; paired residence × dispensing matrix; same patient set on both sides | `geography_residence_rates.xlsx`, `state_dispensing_facility.xlsx`, `region_dispensing_facility.xlsx`, `map_state_*.png` |
+| 4 – Figure 2 | Relabelled as "recorded monthly dispensing"; N = 4,231; "No dispensing record" defined; combinations kept; ribbons coloured by the month of origin | `figure2_recorded_monthly_dispensing.png`, `figure2_recorded_monthly_dispensing_data.xlsx` |
+| 5a/5b – Linkage | PA aggregated to 1 row per key before the join; `one-to-one` join; authorization-level linkage separated from patient-level deduplication | notebook section 3, `figure1_flowchart_data_linkage.xlsx` |
+| 5c – Missing demographics | The 468 patients with missing age/race are exactly the patients not linked to PA; empirical assessment using AM fields | `missing_demographics_linkage.xlsx` |
+| 6a – Period | Extraction window (processing months 2023-01 to 2025-02), `AP_CMP` field, 41 records with 2024 competence processed in 2025 | `extraction_window.xlsx` |
+| 7a/7b/7e – Age | Percentages with both denominators, "≥ 80" label, median and IQR | `age.xlsx`, `age_pyramid.png` |
+| 7c – Table 4 | Mutually exclusive categories (octreotide without lanreotide, lanreotide without octreotide, both) | `table4_medication_categories.xlsx` |
+| 8a – SIGTAP | Supplementary table with the 8 codes | `sigtap_codes.xlsx` |
+| 6b–d, 7d, 7f, 7g, 8b–d | Text-only changes in the manuscript | `response_to_reviewers_draft.md` |
 
-Também regeneradas com a coorte corrigida: `sexo`, `raca_cor`, `combinacoes_medicamentos`, `medicamentos_recentes`, `medicamentos_gasto`, `acromegalia_abandono_anual`, `usuarios_unicos_medicamento_mes`.
+Also regenerated with the corrected cohort: `sex.xlsx`, `race_colour.xlsx`, `medication_combinations.xlsx`, `most_recent_medication.xlsx`, `medication_spending.xlsx`, `20260907_acromegaly_annual_discontinuation.xlsx` and `20260907_unique_users_by_medication_month.csv`.
 
-## Achados que mudam a interpretação
+## Findings that change the interpretation
 
-1. **Residência**: o campo `AP_MUNPCN` do AM está completo. A ausência de residência vinha do uso de `PA_MUNPCN`. 99,55% dos pacientes são dispensados na própria região de residência e 99,05% na própria UF; a ideia de 473 pacientes "viajando" para o Sudeste não se sustenta.
-2. **Perda diferencial na demografia**: 98,7% dos 468 pacientes sem idade/raça residem no Sudeste. Pelos campos do AM, eles têm idade e sexo semelhantes aos demais, porém mais pardos e pretos (42,7% + 7,7% versus 36,2% + 4,8%). A distribuição de raça/cor por caso completo superestima brancos. A idade do AM coincide com a do PA (±1 ano) em 100% dos vinculados, então usar `AP_NUIDADE`/`AP_RACACOR` é uma alternativa sem dados ausentes, se os autores quiserem.
-3. **CID**: nenhum registro do AM traz o código `E22` de três caracteres. Apenas 1 paciente (CID principal E221, secundário E220, cabergolina) entrou pelo campo secundário.
+1. **Residence**: the `AP_MUNPCN` field in AM is complete. Missing residence came from using `PA_MUNPCN`. 99.55% of patients are dispensed in their region of residence and 99.05% in their state of residence. The interpretation of 473 patients "travelling" to the Southeast does not hold.
+2. **Differential missingness in demographics**: 98.7% of the 468 patients without age/race live in the Southeast. According to the AM fields, they have similar age and sex to linked patients but a higher proportion of Brown and Black patients (42.7% + 7.7% vs 36.2% + 4.8%). The complete-case race/colour distribution overstates White patients. AM age agrees with PA age (±1 year) for 100% of linked patients, so `AP_NUIDADE`/`AP_RACACOR` are an alternative source without missing data, if the authors choose to use them.
+3. **ICD**: no AM record carries the three-character code `E22`. Only 1 patient (primary diagnosis E221, secondary E220, cabergoline) was included through the secondary field.
 
-## Mudanças nos notebooks
+## Notebook changes
 
-Nos dois notebooks:
-- Saídas gravadas em `resultados/third_review/`.
-- Novas seções: ligação AM+PA 1:0..1, exclusão sem CNS (4.1), janela de extração (5.1), definição de caso (5.2), demografia × ligação (6.2.1), residência e taxas (6.7) e Tabela 4 (7.2.1).
-- Tabelas por estabelecimento renomeadas (contagens, sem taxa).
-- Caminho absoluto inexistente do Sankey trocado por `../data/processed/`.
+In both notebooks:
+- Outputs are written to `resultados/third_review/` and translated to English at export (`exportar_xlsx()` in `notebooks/func/translation_en.R`).
+- New sections: 1:0..1 AM+PA linkage, exclusion of missing identifiers (4.1), extraction window (5.1), case definition (5.2), demographics × linkage (6.2.1), residence and rates (6.7) and Table 4 (7.2.1).
+- Facility-based tables renamed (counts, no rates).
+- The non-existent absolute path of the Sankey output was replaced by `../data/processed/`.
 
-Só no `acromegalia_analise_medicamentos.ipynb`:
-- Corrigido o erro de códigos de raça/cor (03 e 04 estavam trocados: Parda/Amarela).
-- Mapas refeitos: contagem por estabelecimento; contagem e taxa por milhão por residência.
+Only in `acromegalia_analise_medicamentos.ipynb`:
+- Fixed race/colour codes (03 and 04 were swapped: Brown/Asian).
+- Maps rebuilt: counts by dispensing facility; counts and rates per million by residence.
 
-Só no `acromegalia_uniao_medicamentos.ipynb`:
-- Figura 2 (7.4.4) e fluxograma (9) refeitos.
-- Os alluviais exploratórios 7.4.2/7.4.3 continuam no notebook com uma nota, mas não são mais salvos em disco.
+Only in `acromegalia_uniao_medicamentos.ipynb`:
+- Figure 2 (7.4.4) and the flowchart (9) rebuilt.
+- The exploratory alluvial plots 7.4.2/7.4.3 remain in the notebook with a note but are no longer saved to disk.
 
-## Pontos de atenção (não pedidos pela revisão, não alterados)
+## Points of attention (not requested by the review, not changed)
 
-- `medicamentos_gasto`: os valores do PA são somados por medicamento do AM (`AP_PRIPAL`), incluindo linhas do PA com outros procedimentos da mesma APAC. A distribuição de valores entre medicamentos parece pouco plausível (quase todo o valor fica em octreotida 10 mg) e merece revisão antes de ser usada no texto.
-- A classificação de medicamentos usa só o procedimento principal do AM. Parte das linhas do PA vinculadas registram outro medicamento na mesma APAC, o que pode indicar uso concomitante não capturado.
+- `medication_spending.xlsx`: PA amounts are summed by the AM main medication (`AP_PRIPAL`), including PA lines for other procedures of the same APAC. The resulting distribution across medications looks implausible (almost all the amount falls under octreotide 10 mg) and should be reviewed before being used in the text.
+- Medication classification uses only the AM main procedure. Some linked PA lines record another medication in the same APAC, which may indicate concomitant use that is not captured.
