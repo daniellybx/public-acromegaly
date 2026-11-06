@@ -1,0 +1,11 @@
+ .gitattributes                                     |    1 [32m+[m
+ data/auxiliar/atlasivs_dadosbrutos_pt_v2.xlsx      |    3 [32m+[m
+ data/auxiliar/ibge_cnv_popt2024.csv                | 5571 [32m+++++++++++++++++++[m
+ data/auxiliar/ipeadata[29-08-2025-04-00].csv       | 5599 [32m++++++++++++++++++++[m
+ ...dicamentos_equidade_municipios_corrigidos.ipynb | 3877 [32m++++++++++++++[m
+ .../20261031_data2024_case_definition_icd.xlsx     |  Bin [31m0[m -> [32m11787[m bytes
+ ...1031_data2024_exclusion_missing_patient_id.xlsx |  Bin [31m0[m -> [32m6624[m bytes
+ .../20261031_data2024_extraction_window.xlsx       |  Bin [31m0[m -> [32m8534[m bytes
+ resultados/third_review/20261031_data2024_sex.xlsx |  Bin [31m0[m -> [32m6467[m bytes
+ resultados/third_review/tabela_equidade.xlsx       |  Bin [31m0[m -> [32m10632[m bytes
+ 10 files changed, 15051 insertions(+)
